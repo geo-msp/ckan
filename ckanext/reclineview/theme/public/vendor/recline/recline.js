@@ -1065,9 +1065,9 @@ my.Flot = Backbone.View.extend({
     <div class="recline-flot"> \
       <div class="panel graph" style="display: block;"> \
         <div class="js-temp-notice alert alert-block"> \
-          <h3 class="alert-heading">Hey there!</h3> \
-          <p>There\'s no graph here yet because we don\'t know what fields you\'d like to see plotted.</p> \
-          <p>Please tell us by <strong>using the menu on the right</strong> and a graph will automatically appear.</p> \
+          <h3 class="alert-heading">Hola!</h3> \
+          <p>Il n\'y a aucun graphique de défini présentement.</p> \
+          <p>Veuillez utilser le <strong>menu de droite</strong> et un graphique apparaîtra automatiquement.</p> \
         </div> \
       </div> \
     </div> \
@@ -1405,20 +1405,20 @@ my.FlotControls = Backbone.View.extend({
   <div class="editor"> \
     <form class="form-stacked"> \
       <div class="clearfix"> \
-        <label>Graph Type</label> \
+        <label>Type de graohique</label> \
         <div class="input editor-type"> \
           <select> \
-          <option value="lines-and-points">Lines and Points</option> \
-          <option value="lines">Lines</option> \
+          <option value="lines-and-points">Lignes et points</option> \
+          <option value="lines">Lignes</option> \
           <option value="points">Points</option> \
-          <option value="bars">Bars</option> \
-          <option value="columns">Columns</option> \
+          <option value="bars">Rangée</option> \
+          <option value="columns">Colonne</option> \
           </select> \
         </div> \
-        <label>Group Column (Axis 1)</label> \
+        <label>Axe x</label> \
         <div class="input editor-group"> \
           <select> \
-          <option value="">Please choose ...</option> \
+          <option value="">Choisir </option> \
           {{#fields}} \
           <option value="{{id}}">{{label}}</option> \
           {{/fields}} \
@@ -1428,10 +1428,10 @@ my.FlotControls = Backbone.View.extend({
         </div> \
       </div> \
       <div class="editor-buttons"> \
-        <button class="btn editor-add">Add Series</button> \
+        <button class="btn editor-add">Ajouter une série</button> \
       </div> \
       <div class="editor-buttons editor-submit" comment="hidden temporarily" style="display: none;"> \
-        <button class="editor-save">Save</button> \
+        <button class="editor-save">Sauvegarder</button> \
         <input type="hidden" class="editor-id" value="chart-1" /> \
       </div> \
     </form> \
@@ -1439,8 +1439,8 @@ my.FlotControls = Backbone.View.extend({
 ',
   templateSeriesEditor: ' \
     <div class="editor-series js-series-{{seriesIndex}}"> \
-      <label>Series <span>{{seriesName}} (Axis 2)</span> \
-        [<a href="#remove" class="action-remove-series">Remove</a>] \
+      <label>Séries <span>{{seriesName}} (Axis Y)</span> \
+        [<a href="#remove" class="action-remove-series">Enlever</a>] \
       </label> \
       <div class="input"> \
         <select> \
@@ -2603,7 +2603,7 @@ my.MultiView = Backbone.View.extend({
         </div> \
       </div> \
       <div class="recline-results-info"> \
-        <span class="doc-count">{{recordCount}}</span> records\
+        <span class="doc-count">{{recordCount}}</span> enregistrements\
       </div> \
       <div class="menu-right"> \
         <div class="btn-group" data-toggle="buttons-checkbox"> \
@@ -4280,7 +4280,7 @@ my.QueryEditor = Backbone.View.extend({
     <form action="" method="GET" class="form-inline"> \
       <div class="input-prepend text-query"> \
         <span class="add-on"><i class="icon-search"></i></span> \
-        <label>Search</label><input type="text" name="q" value="{{q}}" class="span2" placeholder="Search data ..." class="search-query" /> \
+        <label>Search</label><input type="text" name="q" value="{{q}}" class="span2" placeholder="Recherche ..." class="search-query" /> \
       </div> \
       <button type="submit" class="btn">Go &raquo;</button> \
     </form> \
