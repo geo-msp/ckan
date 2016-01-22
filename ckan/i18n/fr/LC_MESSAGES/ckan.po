@@ -2373,6 +2373,9 @@ msgid ""
 "href=\"http://docs.ckan.org/en/latest/maintaining/datastore.html\" "
 "target=\"_blank\">main CKAN Data API and DataStore documentation</a>.</p> "
 msgstr ""
+"Plus d'information sur le site <a "
+"href=\"http://docs.ckan.org/en/latest/maintaining/datastore.html\" "
+"target=\"_blank\"> de documentation de CKAN Data API et DataStore"
 
 #: ckan/templates/ajax_snippets/api_info.html:33
 msgid "Endpoints"
@@ -3437,7 +3440,7 @@ msgstr "URL:"
 
 #: ckan/templates/package/resource_read.html:69
 msgid "From the dataset abstract"
-msgstr "Issu de l'abstract du jeu de données"
+msgstr "Issu du résumé de la description du jeu de données"
 
 #: ckan/templates/package/resource_read.html:71
 #, python-format
