@@ -3317,7 +3317,7 @@ msgstr "URL:"
 
 #: ckan/templates/package/resource_read.html:69
 msgid "From the dataset abstract"
-msgstr "Issu de l'abstract du jeu de données"
+msgstr "Issu du résumé de la description du jeu de données"
 
 #: ckan/templates/package/resource_read.html:71
 #, python-format
