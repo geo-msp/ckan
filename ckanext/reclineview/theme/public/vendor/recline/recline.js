@@ -2280,6 +2280,7 @@ my.Map = Backbone.View.extend({
   // on [OpenStreetMap](http://openstreetmap.org).
   //
   _setupMap: function(){
+    /*
     var self = this;
     this.map = new L.Map(this.$map.get(0));
 
@@ -2297,6 +2298,26 @@ my.Map = Backbone.View.extend({
     this.features = new L.GeoJSON(null, this.geoJsonLayerOptions);
 
     this.map.setView([0, 0], 2);
+
+    this.mapReady = true;
+    */
+    var self = this;
+    this.map = new L.Map(this.$map.get(0));
+  
+    var mapUrl = "https://geoegl.msp.gouv.qc.ca/cgi-wms/mapcache.fcgi/tms/1.0.0/carte_gouv_qc@EPSG_3857/{z}/{x}/{y}.png";
+    var mspAttribution = '<a href="http://www.droitauteur.gouv.qc.ca/copyright.php">© Gouvernement du Québec</a>';
+    var bg = new L.TileLayer(mapUrl, {maxZoom: 18, attribution: mspAttribution ,tms: true});
+    this.map.addLayer(bg);
+
+    this.markers = new L.MarkerClusterGroup(this._clusterOptions);
+
+    // rebind this (as needed in e.g. default case above)
+    this.geoJsonLayerOptions.pointToLayer =  _.bind(
+        this.geoJsonLayerOptions.pointToLayer,
+        this);
+    this.features = new L.GeoJSON(null, this.geoJsonLayerOptions);
+
+    this.map.setView([50.8, -71.9], 5);
 
     this.mapReady = true;
   },
@@ -2363,7 +2384,7 @@ my.MapMenu = Backbone.View.extend({
         </div> \
       </div> \
       <div class="editor-buttons"> \
-        <button class="btn editor-update-map">Update</button> \
+        <button class="btn editor-update-map">Mettre à jour</button> \
       </div> \
       <div class="editor-options" > \
         <label class="checkbox"> \
@@ -2371,7 +2392,7 @@ my.MapMenu = Backbone.View.extend({
           Zoom automatique</label> \
         <label class="checkbox"> \
           <input type="checkbox" id="editor-cluster" value="cluster"/> \
-          Afficher en grappe</label> \
+          Afficher en groupe</label> \
       </div> \
       <input type="hidden" class="editor-id" value="map-1" /> \
     </form> \
