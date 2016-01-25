@@ -3349,7 +3349,11 @@ msgid ""
 "If a view requires the DataStore, the DataStore plugin may not be enabled, "
 "or the data may not have been pushed to the DataStore, or the DataStore "
 "hasn't finished processing the data yet"
-msgstr "Si une vue exige le magasin de données, l'extension du magasin de données ne peut pas être activé, les données ne peuvent pas avoir été poussées vers le magasin de données ou le magasin de données n'a pas encore fini de traiter les données"
+msgstr ""
+"Si la vue requiert un DataStore, le module d'extension n'est peut être pas installé"
+"ou la donnée n'a pas été envoyé au DataStore, ou le DataStore n'a pas fini de "
+"le traitement de la donnée."
+
 
 #: ckan/templates/package/resource_read.html:147
 msgid "Additional Information"
