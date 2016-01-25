@@ -2,7 +2,7 @@ ckan.module('text_view', function (jQuery, _) {
   return {
     options: {
       i18n: {
-        error: _('An error occurred: %(text)s %(error)s')
+        error: 'Une erreur est survenue'
       },
       parameters: {
         json: {
