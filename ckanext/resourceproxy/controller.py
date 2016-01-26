@@ -67,7 +67,7 @@ def proxy_resource(context, data_dict):
 
             if length >= MAX_FILE_SIZE:
                 base.abort(409, headers={'content-encoding': ''},
-                           detail='Content is too large to be proxied.')
+                           detail='Le contenu externe est trop volumineux pour etre telecharge.')
 
     except requests.exceptions.HTTPError, error:
         details = 'Could not proxy resource. Server responded with %s %s' % (

@@ -10,6 +10,7 @@ this.ckan.module('data-viewer', function (jQuery) {
 
     initialize: function () {
       jQuery.proxyAll(this, /_on/);
+      this._onLoad();
       this.el.on('load', this._onLoad);
       this._FirefoxFix();
       this.sandbox.subscribe('data-viewer-error', this._onDataViewerError);

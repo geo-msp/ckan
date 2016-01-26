@@ -49,7 +49,7 @@ this.ckan.module('resource-view-filters', function (jQuery, _) {
       addFilterInput.select2({
         data: data,
         placeholder: 'Select a field',
-        width: 'resolve',
+        width: 'resolve'
       }).on('change', onChangeCallback);
 
       evt.preventDefault();
@@ -91,9 +91,10 @@ this.ckan.module('resource-view-filters', function (jQuery, _) {
         allowClear: true,
         placeholder: ' ', // select2 needs a placeholder to allow clearing
         width: 'resolve',
-        minimumInputLength: 0,
+	dropdownAutoWidth : true,
+	minimumInputLength: 0,
         ajax: {
-          url: '/api/3/action/datastore_search',
+          url: '/data/api/3/action/datastore_search',
           datatype: 'json',
           quietMillis: 200,
           cache: true,
@@ -177,7 +178,7 @@ this.ckan.module('resource-view-filters', function (jQuery, _) {
         '</div>',
       ].join('\n'),
       addFilterTemplate: [
-        '<a href="#">Add Filter</a>',
+        '<a href="#">Add Filter/a>',
       ].join('\n')
     }
   };
