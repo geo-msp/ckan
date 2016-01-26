@@ -58,7 +58,7 @@ this.recline.Backend.DataProxy = this.recline.Backend.DataProxy || {};
     var dfd = new Deferred();
     var timer = setTimeout(function() {
       dfd.reject({
-        message: 'Request Error: Backend did not respond after ' + (my.timeout / 1000) + ' seconds'
+        message: 'Erreur : aucune réponse après ' + (my.timeout / 1000) + ' secondes'
       });
     }, my.timeout);
     ourFunction.done(function(args) {
