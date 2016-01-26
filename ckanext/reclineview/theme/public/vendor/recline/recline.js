@@ -1415,7 +1415,7 @@ my.FlotControls = Backbone.View.extend({
           <option value="columns">Colonne</option> \
           </select> \
         </div> \
-        <label>Axe x</label> \
+        <label>Axe des x</label> \
         <div class="input editor-group"> \
           <select> \
           <option value="">Choisir </option> \
@@ -1439,7 +1439,7 @@ my.FlotControls = Backbone.View.extend({
 ',
   templateSeriesEditor: ' \
     <div class="editor-series js-series-{{seriesIndex}}"> \
-      <label>Séries <span>{{seriesName}} (Axis Y)</span> \
+      <label>Séries <span>{{seriesName}} (Axe des Y)</span> \
         [<a href="#remove" class="action-remove-series">Enlever</a>] \
       </label> \
       <div class="input"> \
@@ -4361,7 +4361,7 @@ my.ValueFilter = Backbone.View.extend({
           {{{filterRender}}} \
         {{/filters}} \
         {{#filters.length}} \
-        <button type="submit" class="btn update-filter">Update</button> \
+        <button type="submit" class="btn update-filter">Mettre à jour</button> \
         {{/filters.length}} \
       </form> \
     </div> \
