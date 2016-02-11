@@ -86,7 +86,6 @@ this.ckan.module('recline_view', function (jQuery, _) {
             self.initializeView(dataset, reclineView);
         })
         .fail(function(error){
-          if (error.message) errorMsg += ' (' + error.message + ')';
           showError(errorMsg);
         });
     },
