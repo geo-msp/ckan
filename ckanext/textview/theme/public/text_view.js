@@ -68,7 +68,7 @@ ckan.module('text_view', function (jQuery, _) {
         },
         error: function(jqXHR, textStatus, errorThrown) {
           if (textStatus == 'error' && jqXHR.responseText.length) {
-            self.el.html(jqXHR.responseText);
+            self.el.html('Une erreur est survenue');
           } else {
             self.el.html(self.i18n('error', {text: textStatus, error: errorThrown}));
           }
