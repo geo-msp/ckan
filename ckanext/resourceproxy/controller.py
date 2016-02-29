@@ -29,12 +29,12 @@ def proxy_resource(context, data_dict):
         resource = logic.get_action('resource_show')(context, {'id':
                                                      resource_id})
     except logic.NotFound:
-            base.abort(404, _('Resource not found'))
+            base.abort(404, _('Ressource non disponible'))
     url = resource['url']
 
     parts = urlparse.urlsplit(url)
     if not parts.scheme or not parts.netloc:
-        base.abort(409, detail='Invalid URL.')
+        base.abort(409, detail='URL invalide.')
 
     try:
         # first we try a HEAD request which may not be supported
@@ -50,9 +50,10 @@ def proxy_resource(context, data_dict):
 
         cl = r.headers.get('content-length')
         if cl and int(cl) > MAX_FILE_SIZE:
-            base.abort(409, '''Content is too large to be proxied. Allowed
-                file size: {allowed}, Content-Length: {actual}.'''.format(
+            base.abort(409, '''Le contenu externe est trop volumineux pour etre visualise.
+                Taille de fichier permise: {allowed}, Contenu actuel: {actual}.'''.format(
                 allowed=MAX_FILE_SIZE, actual=cl))
+                
 
         if not did_get:
             r = requests.get(url, stream=True)
@@ -67,18 +68,17 @@ def proxy_resource(context, data_dict):
 
             if length >= MAX_FILE_SIZE:
                 base.abort(409, headers={'content-encoding': ''},
-                           detail='Le contenu externe est trop volumineux pour etre telecharge.')
+                           detail='Le contenu externe est trop volumineux pour etre visualise.')
 
     except requests.exceptions.HTTPError, error:
-        details = 'Could not proxy resource. Server responded with %s %s' % (
+        details = 'Erreur pour afficher le contenu externe avec le proxy. Le serveur repond avec %s %s' % (
             error.response.status_code, error.response.reason)
         base.abort(409, detail=details)
     except requests.exceptions.ConnectionError, error:
-        details = '''Could not proxy resource because a
-                            connection error occurred. %s''' % error
+        details = '''Erreur pour afficher le contenu externe avec le proxy. %s''' % error
         base.abort(502, detail=details)
     except requests.exceptions.Timeout, error:
-        details = 'Could not proxy resource because the connection timed out.'
+        details = 'Erreur pour afficher le contenu externe avec le proxy.'
         base.abort(504, detail=details)
 
 
