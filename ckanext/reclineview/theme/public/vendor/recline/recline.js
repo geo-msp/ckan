@@ -1065,9 +1065,9 @@ my.Flot = Backbone.View.extend({
     <div class="recline-flot"> \
       <div class="panel graph" style="display: block;"> \
         <div class="js-temp-notice alert alert-block"> \
-          <h3 class="alert-heading">Hola!</h3> \
+          <h3 class="alert-heading">Attention!</h3> \
           <p>Il n\'y a aucun graphique de défini présentement.</p> \
-          <p>Veuillez utilser le <strong>menu de droite</strong> et un graphique apparaîtra automatiquement.</p> \
+          <p>Veuillez utiliser le <strong>menu de droite</strong> et un graphique apparaîtra automatiquement.</p> \
         </div> \
       </div> \
     </div> \
