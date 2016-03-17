@@ -2,7 +2,7 @@ ckan.module('text_view', function (jQuery, _) {
   return {
     options: {
       i18n: {
-        error: 'Une erreur est survenue'
+        error: '<p>Les données ne peuvent être visualisées.<br>Elles sont disponibles pour le téléchargement par le bouton Télécharger ci-haut. <br>Pour tout problème avec ce jeu de données, veuillez  <a href="./../../../../../fr/contact">communiquez avec nous</a></p>'
       },
       parameters: {
         json: {
@@ -68,7 +68,7 @@ ckan.module('text_view', function (jQuery, _) {
         },
         error: function(jqXHR, textStatus, errorThrown) {
           if (textStatus == 'error' && jqXHR.responseText.length) {
-            self.el.html('Une erreur est survenue');
+            self.el.html('<p>Les données ne peuvent être visualisées.<br>Elles sont disponibles pour le téléchargement par le bouton Télécharger ci-haut. <br>Pour tout problème avec ce jeu de données, veuillez  <a href="./../../../../../fr/contact">communiquez avec nous</a></p>');
           } else {
             self.el.html(self.i18n('error', {text: textStatus, error: errorThrown}));
           }
