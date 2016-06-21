@@ -2,7 +2,7 @@ ckan.module('text_view', function (jQuery, _) {
   return {
     options: {
       i18n: {
-        error: '<p style="font-family: \'Dosis\', sans-serif;font-size:16px;">Les données ne peuvent être visualisées.<br>Elles sont disponibles pour le téléchargement par le bouton Télécharger ci-haut. <br>Pour tout problème avec ce jeu de données, veuillez  <a href="/fr/contact">communiquez avec nous</a></p>'
+        error: '<link href="https://fonts.googleapis.com/css?family=Dosis:400,200,300,500,600,700,800" rel="stylesheet" type="text/css"><p style="font-family: \'Dosis\', sans-serif;font-size:16px;">Les données ne peuvent être visualisées.<br>Elles sont disponibles pour le téléchargement par le bouton Télécharger ci-haut. <br>Pour tout problème avec ce jeu de données, veuillez  <a href="/fr/contact">communiquez avec nous</a></p>'
       },
       parameters: {
         json: {
@@ -68,7 +68,7 @@ ckan.module('text_view', function (jQuery, _) {
         },
         error: function(jqXHR, textStatus, errorThrown) {
           if (textStatus == 'error' && jqXHR.responseText.length) {
-            self.el.html('<p style="font-family: \'Dosis\', sans-serif;font-size:16px;">Les données ne peuvent être visualisées.<br>Elles sont disponibles pour le téléchargement par le bouton Télécharger ci-haut. <br>Pour tout problème avec ce jeu de données, veuillez  <a href="/fr/contact">communiquez avec nous</a></p>');
+            self.el.html('<link href="https://fonts.googleapis.com/css?family=Dosis:400,200,300,500,600,700,800" rel="stylesheet" type="text/css"><p style="font-family: \'Dosis\', sans-serif;font-size:16px;">Les données ne peuvent être visualisées.<br>Elles sont disponibles pour le téléchargement par le bouton Télécharger ci-haut. <br>Pour tout problème avec ce jeu de données, veuillez  <a href="/fr/contact">communiquez avec nous</a></p>');
           } else {
             self.el.html(self.i18n('error', {text: textStatus, error: errorThrown}));
           }
