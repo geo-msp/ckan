@@ -2304,7 +2304,7 @@ my.Map = Backbone.View.extend({
     var self = this;
     this.map = new L.Map(this.$map.get(0));
   
-    var mapUrl = "/cgi-wms/mapcache.fcgi/tms/1.0.0/carte_gouv_qc_ro@EPSG_3857/{z}/{x}/{y}.png";
+    var mapUrl = "/carto/tms/1.0.0/carte_gouv_qc_ro@EPSG_3857/{z}/{x}/{y}.png";
     var mspAttribution = '<a href="http://www.droitauteur.gouv.qc.ca/copyright.php">© Gouvernement du Québec</a>';
     var bg = new L.TileLayer(mapUrl, {maxZoom: 18, attribution: mspAttribution ,tms: true});
     this.map.addLayer(bg);
