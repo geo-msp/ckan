@@ -94,6 +94,7 @@ this.ckan.module('plot', function (jQuery, _) {
     draw: function () {
       if (!this.drawn && this.canvas.is(':visible')) {
         this.graph = jQuery.plot(this.canvas, this.data, this.options);
+
       }
     },
 

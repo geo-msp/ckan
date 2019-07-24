@@ -78,6 +78,21 @@ license_value = json.loads(get_httprequest_on_path(LICENSE_VALUE_PATH))
 recommended_open_format = get_httprequest_on_path(RECOMMENDED_OPEN_FORMAT_PATH)
 secondary_open_format = get_httprequest_on_path(SECONDARY_OPEN_FORMAT_PATH)
 
+date_french = {
+'January': 'Janvier',
+'February': 'Février',
+'March': 'Mars',
+'April': 'Avril',
+'May': 'Mai',
+'June': 'Juin',
+'July': 'Juillet',
+'August': 'Août',
+'September': 'Septembre',
+'October': 'Octobre',
+'November':'Novembre',
+'December':'Décembre'
+}
+
 
 # -----------Modfication_KRL------------>>
 
@@ -89,13 +104,14 @@ def table(name):
 def datetime2date(datetime_):
     return datetime.date(datetime_.year, datetime_.month, datetime_.day)
 
-
 # -----------Modfication_KRL------------>>
 
 class Stats(object):
 
     # -----------Modfication_KRL------------
     # Donnees Quebec api
+
+
 
     def nb_of_org_by_type(cls):
         '''
@@ -128,7 +144,7 @@ class Stats(object):
         end = datetime_class.now().date()
 
         while cur_date < end:
-            dates[cur_date] = str(cur_date.strftime("%B")) + " " + str(cur_date.year)
+            dates[cur_date] = date_french[str(cur_date.strftime("%B"))].decode('utf-8') + " " + str(cur_date.year)
             cur_date += relativedelta(months=1)
 
         dates = sorted(dates.items(), key=lambda kv: kv[0])
