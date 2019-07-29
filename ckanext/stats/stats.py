@@ -52,7 +52,7 @@ PREFIX_URL_DATASET = '/recherche/fr/dataset/'
 '''
 Paths
 '''
-PATH_DATA = "https://beta.donneesquebec.ca/wp-content/uploads/stats_data/"
+PATH_DATA = "https://rc.donneesquebec.ca/wp-content/uploads/stats_data/"
 LICENSE_VALUE_PATH = PATH_DATA + "license_values.json"
 RECOMMENDED_OPEN_FORMAT_PATH = PATH_DATA + "recommended_open_formats.json"
 SECONDARY_OPEN_FORMAT_PATH = PATH_DATA + "secondary_open_formats.json"
