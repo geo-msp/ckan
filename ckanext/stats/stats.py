@@ -53,13 +53,16 @@ PREFIX_URL_DATASET = '/recherche/fr/dataset/'
 Paths
 '''
 SITE_URL = config.get('ckan.site_url', '')[:-10]
-PATH_DATA = SITE_URL + "/wp-content/uploads/stats_data/"
+PATH_DATA = SITE_URL + "/wp-content/themes/donnees-quebec/"
+PATH_COLLECTOR_DATA = SITE_URL + "/wp-content/uploads/stats_data/"
+
 LICENSE_VALUE_PATH = PATH_DATA + "license_values.json"
 RECOMMENDED_OPEN_FORMAT_PATH = PATH_DATA + "recommended_open_formats.json"
 SECONDARY_OPEN_FORMAT_PATH = PATH_DATA + "secondary_open_formats.json"
-NB_ORG_PATH = PATH_DATA + "nb_org_by_type.json"
-SCORE_API_REQUEST_PATH = PATH_DATA + "score_api_request.json"
-SCORE_DOCUMENTATION_PATH = PATH_DATA + "score_documentation.json"
+
+NB_ORG_PATH = PATH_COLLECTOR_DATA + "nb_org_by_type.json"
+SCORE_API_REQUEST_PATH = PATH_COLLECTOR_DATA + "score_api_request.json"
+SCORE_DOCUMENTATION_PATH = PATH_COLLECTOR_DATA + "score_documentation.json"
 
 
 def get_httprequest_on_path(path):
