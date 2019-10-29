@@ -8,6 +8,9 @@ ckan.egg-info/*
 sandbox/*
 dist
 
+#JetBrains
+.idea/
+
 # pylons
 development.ini*
 sstore/*
