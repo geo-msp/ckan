@@ -42,12 +42,6 @@ MUNICIPAL_TAG_NAME = "Sherbrooke"
 OPEN_GOVERNMENT_CANADA_TAG_NAME = "Gouvernement ouvert"
 GLOBAL_OPEN_DATA_INDEX_TAG_NAME = "GES"
 
-'''
-Le nom d'event dans google analytics
-'''
-DOWNLOAD_EVENT_NAME = "téléchargement"
-
-PREFIX_URL_DATASET = '/recherche/fr/dataset/'
 
 '''
 Paths
