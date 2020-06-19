@@ -4,6 +4,7 @@ Contient des fonctions pour collecter les données nécessaires pour
 la page statistique avec la base de données.
 '''
 # -----------Modfication_KRL------------
+import ckan
 import datetime
 from datetime import datetime as datetime_class
 from dateutil.relativedelta import relativedelta
@@ -47,7 +48,7 @@ GLOBAL_OPEN_DATA_INDEX_TAG_NAME = "GES"
 Paths
 '''
 SITE_URL = config.get('ckan.site_url', '')[:-10]
-PATH_DATA = SITE_URL + "/wp-content/themes/donnees-quebec/"
+PATH_DATA = ckan.__path__[0] + '/../../ckanext-donneesqc-theme/ckanext/donneesqc_theme/'
 PATH_COLLECTOR_DATA = SITE_URL + "/wp-content/uploads/stats_data/"
 
 LICENSE_VALUE_PATH = PATH_DATA + "license_values.json"
@@ -58,23 +59,12 @@ NB_ORG_PATH = PATH_COLLECTOR_DATA + "nb_org_by_type.json"
 SCORE_API_REQUEST_PATH = PATH_COLLECTOR_DATA + "score_api_request.json"
 SCORE_DOCUMENTATION_PATH = PATH_COLLECTOR_DATA + "score_documentation.json"
 
-
-def get_httprequest_on_path(path):
-    http = urllib3.PoolManager()
-    req = http.request('GET', path)
-    if(req.status == 200):
-        response = req.data
-    else:
-        response = str(req.status)
-
-    return response
-
 '''
 Valeur externe pour calculer les scores
 '''
-license_value = json.loads(get_httprequest_on_path(LICENSE_VALUE_PATH))
-recommended_open_format = get_httprequest_on_path(RECOMMENDED_OPEN_FORMAT_PATH)
-secondary_open_format = get_httprequest_on_path(SECONDARY_OPEN_FORMAT_PATH)
+license_value = json.loads(open(LICENSE_VALUE_PATH).read())
+recommended_open_format = json.loads(open(RECOMMENDED_OPEN_FORMAT_PATH).read())
+secondary_open_format = json.loads(open(SECONDARY_OPEN_FORMAT_PATH).read())
 
 date_french = {
 'January': 'Janvier',
