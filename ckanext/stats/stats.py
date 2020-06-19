@@ -95,14 +95,13 @@ def datetime2date(datetime_):
 
 # -----------Modfication_KRL------------>>
 
-class Stats(object):
 
+class Stats(object):
     # -----------Modfication_KRL------------
     # Donnees Quebec api
 
-
-
-    def nb_of_org_by_type(cls):
+    @staticmethod
+    def nb_of_org_by_type():
         """
         Utilise l'api de données Québec pour obtenir le nombre d'organisations par type.
 
@@ -110,7 +109,8 @@ class Stats(object):
         """
         return json.loads(read_cache("nb_org_by_type.json"))
 
-    def score_api_request(cls):
+    @staticmethod
+    def score_api_request():
         """
         Utilise l'api de données Québec pour obtenir le score sur le nombre de jeux interrogeables par API.
 
@@ -118,7 +118,8 @@ class Stats(object):
         """
         return json.loads(read_cache("score_api_request.json"))
 
-    def get_every_month_between_date_and_now(cls, date):
+    @staticmethod
+    def get_every_month_between_date_and_now(date):
         """
         Utilise dateutil pour obtenir chaque mois entre la date en paramètre et maintenant.
 
@@ -140,7 +141,8 @@ class Stats(object):
 
         return dates
 
-    def get_every_year_between_date_and_now(cls, date):
+    @staticmethod
+    def get_every_year_between_date_and_now(date):
 
         dates = []
 
@@ -153,7 +155,8 @@ class Stats(object):
 
         return dates
 
-    def score_documentation(cls):
+    @staticmethod
+    def score_documentation():
         """
         Utilise l'api de données Québec pour obtenir le score sur le nombre de jeux documentés.
 
@@ -161,7 +164,8 @@ class Stats(object):
         """
         return json.loads(read_cache("score_documentation.json"))
 
-    def score_license(cls):
+    @staticmethod
+    def score_license():
         """
         Vérifie directement dans la base de données à l'aide de Sql alchemy la license de chaque jeu de donnees
         et a l'aide du dictionnaire "license_value" on obtient le score associé a la license.
@@ -190,7 +194,8 @@ class Stats(object):
 
         return final_score
 
-    def score_open_format(cls):
+    @staticmethod
+    def score_open_format():
         """
         Vérifie directement dans la base de données à l'aide de Sql alchemy le format de chaque ressource de chaque jeu de donnees
         et a l'aide de "recommended_open_format" et "secondary_open_format" on obtient le score associé au format.
