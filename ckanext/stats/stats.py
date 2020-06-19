@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-'''
+"""
 Contient des fonctions pour collecter les données nécessaires pour
 la page statistique avec la base de données.
-'''
+"""
 # -----------Modfication_KRL------------
 import ckan
 import datetime
@@ -103,30 +103,30 @@ class Stats(object):
 
 
     def nb_of_org_by_type(cls):
-        '''
+        """
         Utilise l'api de données Québec pour obtenir le nombre d'organisations par type.
 
         :return: dictionnaire de données avec comme clef le type d'organisation et comme valeur le nombre d'organisation correspondante.
-        '''
+        """
         return json.loads(read_cache("nb_org_by_type.json"))
 
     def score_api_request(cls):
-        '''
+        """
         Utilise l'api de données Québec pour obtenir le score sur le nombre de jeux interrogeables par API.
 
         :return: le nombre de jeux interrogeables par API divisé par le nombre total de jeux.
-        '''
+        """
         return json.loads(read_cache("score_api_request.json"))
 
     def get_every_month_between_date_and_now(cls, date):
-        '''
+        """
         Utilise dateutil pour obtenir chaque mois entre la date en paramètre et maintenant.
 
         :param date: date de format "AAAA-MM-JJ" à partir duquel le calcul est effectué.
 
         :return: dictionnaire de données contenant chaque mois entre "date" et maintenant
         avec comme clef la date avec ce format : "AAAA-MM-JJ", et comme valeur ce format: Janvier 2018
-        '''
+        """
         dates = {}
 
         cur_date = start = datetime_class.strptime(date, '%Y-%m-%d').date()
@@ -154,20 +154,20 @@ class Stats(object):
         return dates
 
     def score_documentation(cls):
-        '''
+        """
         Utilise l'api de données Québec pour obtenir le score sur le nombre de jeux documentés.
 
         :return: le nombre de jeux documentés divisé par le nombre total de jeux.
-        '''
+        """
         return json.loads(read_cache("score_documentation.json"))
 
     def score_license(cls):
-        '''
+        """
         Vérifie directement dans la base de données à l'aide de Sql alchemy la license de chaque jeu de donnees
         et a l'aide du dictionnaire "license_value" on obtient le score associé a la license.
 
         :return: le score final des licenses divisé par le nombre total de jeux.
-        '''
+        """
         if type(license_value) is not dict:
             return 0
         license_ids = []
@@ -191,12 +191,12 @@ class Stats(object):
         return final_score
 
     def score_open_format(cls):
-        '''
+        """
         Vérifie directement dans la base de données à l'aide de Sql alchemy le format de chaque ressource de chaque jeu de donnees
         et a l'aide de "recommended_open_format" et "secondary_open_format" on obtient le score associé au format.
 
         :return: le score final des foramts divisé par le nombre total de jeux.
-        '''
+        """
 
         resource = table('resource')
         package = table('package')
@@ -333,20 +333,20 @@ class RevisionStats(object):
 
     @classmethod
     def get_date_weeks_ago(cls, weeks_ago):
-        '''
+        """
         @param weeks_ago: specify how many weeks ago to give count for
                           (0 = this week so far)
-        '''
+        """
         date_ = datetime.date.today()
         return date_ - datetime.timedelta(days=
                                           datetime.date.weekday(date_) + 7 * weeks_ago)
 
     @classmethod
     def get_week_dates(cls, weeks_ago):
-        '''
+        """
         @param weeks_ago: specify how many weeks ago to give count for
                           (0 = this week so far)
-        '''
+        """
         package_revision = table('package_revision')
         revision = table('revision')
         today = datetime.date.today()
@@ -365,10 +365,10 @@ class RevisionStats(object):
 
     @classmethod
     def get_package_revisions(cls):
-        '''
+        """
         @return: Returns list of revisions and date of them, in
                  format: [(id, date), ...]
-        '''
+        """
         package_revision = table('package_revision')
         revision = table('revision')
         s = select([package_revision.c.id, revision.c.timestamp], from_obj=[package_revision.join(revision)]).order_by(
@@ -378,10 +378,10 @@ class RevisionStats(object):
 
     @classmethod
     def get_new_packages(cls):
-        '''
+        """
         @return: Returns list of new pkgs and date when they were created, in
                  format: [(id, date_ordinal), ...]
-        '''
+        """
 
         def new_packages():
             # Can't filter by time in select because 'min' function has to
@@ -408,10 +408,10 @@ class RevisionStats(object):
 
     @classmethod
     def get_deleted_packages(cls):
-        '''
+        """
         @return: Returns list of deleted pkgs and date when they were deleted, in
                  format: [(id, date_ordinal), ...]
-        '''
+        """
 
         def deleted_packages():
             # Can't filter by time in select because 'min' function has to
@@ -556,7 +556,7 @@ class RevisionStats(object):
     @classmethod
     def get_objects_in_a_week(cls, date_week_commences,
                               type_='new-package-rate'):
-        '''
+        """
         @param type: Specifies what to return about the specified week:
                      "package_addition_rate" number of new packages
                      "package_revision_rate" number of package revisions
@@ -566,7 +566,7 @@ class RevisionStats(object):
                      in a tuple with the date.
         @param dates: date range of interest - a tuple:
                      (start_date, end_date)
-        '''
+        """
         assert isinstance(date_week_commences, datetime.date)
         if type_ in ('package_addition_rate', 'new_packages'):
             object_type = 'new_packages'
