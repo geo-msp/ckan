@@ -49,22 +49,23 @@ Paths
 '''
 SITE_URL = config.get('ckan.site_url', '')[:-10]
 PATH_DATA = ckan.__path__[0] + '/../../ckanext-donneesqc-theme/ckanext/donneesqc_theme/'
-PATH_COLLECTOR_DATA = SITE_URL + "/wp-content/uploads/stats_data/"
+COLLECTOR_DATA_URL = SITE_URL + "/home/admgeo1/bin/ga_dq_collecteur/cache/"
 
-LICENSE_VALUE_PATH = PATH_DATA + "license_values.json"
-RECOMMENDED_OPEN_FORMAT_PATH = PATH_DATA + "recommended_open_formats.json"
-SECONDARY_OPEN_FORMAT_PATH = PATH_DATA + "secondary_open_formats.json"
 
-NB_ORG_PATH = PATH_COLLECTOR_DATA + "nb_org_by_type.json"
-SCORE_API_REQUEST_PATH = PATH_COLLECTOR_DATA + "score_api_request.json"
-SCORE_DOCUMENTATION_PATH = PATH_COLLECTOR_DATA + "score_documentation.json"
+def read_cache(filename):
+    return open(COLLECTOR_DATA_URL + filename).read()
+
+
+def read_settings(filename):
+    return open(PATH_DATA + filename).read()
+
 
 '''
 Valeur externe pour calculer les scores
 '''
-license_value = json.loads(open(LICENSE_VALUE_PATH).read())
-recommended_open_format = json.loads(open(RECOMMENDED_OPEN_FORMAT_PATH).read())
-secondary_open_format = json.loads(open(SECONDARY_OPEN_FORMAT_PATH).read())
+license_value = json.loads(read_settings("license_values.json"))
+recommended_open_format = json.loads(read_settings("recommended_open_formats.json"))
+secondary_open_format = json.loads(read_settings("secondary_open_formats.json"))
 
 date_french = {
 'January': 'Janvier',
@@ -107,7 +108,7 @@ class Stats(object):
 
         :return: dictionnaire de données avec comme clef le type d'organisation et comme valeur le nombre d'organisation correspondante.
         '''
-        return json.loads(get_httprequest_on_path(NB_ORG_PATH))
+        return json.loads(read_cache("nb_org_by_type.json"))
 
     def score_api_request(cls):
         '''
@@ -115,7 +116,7 @@ class Stats(object):
 
         :return: le nombre de jeux interrogeables par API divisé par le nombre total de jeux.
         '''
-        return json.loads(get_httprequest_on_path(SCORE_API_REQUEST_PATH))
+        return json.loads(read_cache("score_api_request.json"))
 
     def get_every_month_between_date_and_now(cls, date):
         '''
@@ -158,7 +159,7 @@ class Stats(object):
 
         :return: le nombre de jeux documentés divisé par le nombre total de jeux.
         '''
-        return json.loads(get_httprequest_on_path(SCORE_DOCUMENTATION_PATH))
+        return json.loads(read_cache("score_documentation.json"))
 
     def score_license(cls):
         '''
