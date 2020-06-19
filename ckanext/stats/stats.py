@@ -239,6 +239,14 @@ class Stats(object):
 
         return final_score
 
+    @staticmethod
+    def get_high_value_municipal_datasets():
+        """
+        Obtenir les « jeux de données municipaux à haute valeur »
+
+        :return: tableau de sujets sur lesquels plusieurs villes sont susceptibles de diffuser des données.
+        """
+        return json.loads(read_cache("high_value_municipal_datasets.json"))
     # -----------Modfication_KRL------------>>
 
     @classmethod
