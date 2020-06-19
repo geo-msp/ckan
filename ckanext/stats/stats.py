@@ -48,16 +48,16 @@ GLOBAL_OPEN_DATA_INDEX_TAG_NAME = "GES"
 Paths
 '''
 SITE_URL = config.get('ckan.site_url', '')[:-10]
-PATH_DATA = ckan.__path__[0] + '/../../ckanext-donneesqc-theme/ckanext/donneesqc_theme/'
-COLLECTOR_DATA_URL = SITE_URL + "/home/admgeo1/bin/ga_dq_collecteur/cache/"
+SETTINGS_PATH = ckan.__path__[0] + '/../../ckanext-donneesqc-theme/ckanext/donneesqc_theme/'
+CACHE_DIRECTORY = "/home/admgeo1/bin/ga_dq_collecteur/cache/"
 
 
 def read_cache(filename):
-    return open(COLLECTOR_DATA_URL + filename).read()
+    return open(CACHE_DIRECTORY + filename).read()
 
 
 def read_settings(filename):
-    return open(PATH_DATA + filename).read()
+    return open(SETTINGS_PATH + filename).read()
 
 
 '''
