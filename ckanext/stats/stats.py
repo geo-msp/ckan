@@ -246,7 +246,7 @@ class Stats(object):
 
         :return: tableau de sujets sur lesquels plusieurs villes sont susceptibles de diffuser des données.
         """
-        return json.loads(read_cache("high_value_municipal_datasets.json"))
+        return read_cache("high_value_municipal_datasets.json")
     # -----------Modfication_KRL------------>>
 
     @classmethod
