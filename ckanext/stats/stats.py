@@ -244,9 +244,22 @@ class Stats(object):
         """
         Obtenir les « jeux de données municipaux à haute valeur »
 
-        :return: tableau de sujets sur lesquels plusieurs villes sont susceptibles de diffuser des données.
+        :return: tableau sérialisé de sujets sur lesquels plusieurs villes sont susceptibles de diffuser des données.
         """
         return read_cache("high_value_municipal_datasets.json")
+
+    @staticmethod
+    def get_popular_datasets():
+        """
+        Obtenir les jeux de données les plus populaires
+
+        :return: tableau tridimensionnel. La première dimension contient les classements par téléchargements dans l'élément "downloads" et les classements par visionnements dans l'élément "views".
+            Le contenu est un tableau sérialisé en JSON qui contient comme clés les derniers mois, chaque valeur étant le tableau des jeux de données les plus populaires lors du mois.
+        """
+        return {
+            'downloads': read_cache("popular_datasets_by_downloads.json"),
+            'views': read_cache("popular_datasets_by_views.json")
+        }
     # -----------Modfication_KRL------------>>
 
     @classmethod
